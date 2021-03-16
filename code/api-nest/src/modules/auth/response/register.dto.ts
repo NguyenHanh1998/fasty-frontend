@@ -1,9 +1,9 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
 export class RegisterResponse {
   @ApiProperty({
     type: Number,
-    example: 1
+    example: 1,
   })
   id: number;
 
@@ -18,5 +18,4 @@ export class RegisterResponse {
     example: 'gakki',
   })
   username: string;
-
 }

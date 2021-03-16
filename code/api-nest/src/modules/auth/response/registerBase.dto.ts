@@ -6,5 +6,5 @@ export class RegisterBase extends BaseResponse {
   @ApiResponseProperty({
     type: RegisterResponse,
   })
-  data: RegisterResponse
+  data: RegisterResponse;
 }
