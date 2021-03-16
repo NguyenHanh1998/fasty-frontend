@@ -156,4 +156,9 @@ export class Causes {
     'Webhook already exist.',
     HttpStatus.BAD_REQUEST,
   );
+
+  /**
+   * crate
+   */
+  public static CRATE_NOT_FOUND = new HttpException('Crate not found', HttpStatus.NOT_FOUND);
 }
