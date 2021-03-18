@@ -9,6 +9,7 @@ import { ExceptionFilter } from './config/exception/exception.filter';
 import { TransformInterceptor } from './config/rest/transform.interceptor';
 import { AuthModule } from './modules/auth/auth.module';
 import { CratesModule } from './modules/crates/crates.module';
+import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { CratesModule } from './modules/crates/crates.module';
     TypeOrmModule.forRoot(databaseConfig),
     AuthModule,
     CratesModule,
+    SubscriptionsModule,
   ],
   controllers: [AppController],
   providers: [
