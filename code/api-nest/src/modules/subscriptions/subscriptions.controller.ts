@@ -3,6 +3,7 @@ import { ApiOperation, ApiQuery, ApiResponse } from '@nestjs/swagger';
 import { limits } from 'argon2';
 import { PaginationResponse } from 'src/config/rest/paginationResponse';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { SubscriptionBase } from './response/subscriptionBase.dto';
 import { SubscriptionDetails } from './response/subscriptionDetails.dto';
 import { SubscriptionsBase } from './response/subscriptionsBase.dto';
 import { SubscriptionsService } from './subscriptions.service';
@@ -39,5 +40,23 @@ export class SubscriptionsController {
     @Query('limit') limit = 10,
   ): Promise<PaginationResponse<SubscriptionDetails>> {
     return this.subscriptionsService.getAllSubscriptions({ page, limit });
+  }
+
+  @Get('/:subscription_id')
+  @ApiOperation({
+    tags: ['subscriptions'],
+    operationId: 'getSubscriptionDetails',
+    summary: 'Get one subscription details',
+    description: 'Get one subscription details',
+  })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'SUccessful',
+    type: SubscriptionBase,
+  })
+  async getSubscriptionDetails(
+    @Param('subscription_id') subscriptionId: number,
+  ): Promise<SubscriptionDetails> {
+    return this.subscriptionsService.getSubscriptionDetails(subscriptionId);
   }
 }

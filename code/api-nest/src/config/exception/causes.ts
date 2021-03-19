@@ -161,4 +161,12 @@ export class Causes {
    * crate
    */
   public static CRATE_NOT_FOUND = new HttpException('Crate not found', HttpStatus.NOT_FOUND);
+
+  /**
+   * subscripiton
+   */
+  public static SUBSCRIPITON_NOT_FOUND = new HttpException(
+    'Subscripiton not found',
+    HttpStatus.NOT_FOUND,
+  );
 }
