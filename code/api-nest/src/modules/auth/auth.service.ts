@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Login } from './request/login.dto';
-import { LoginResponse } from './response/login.dto';
+import { LoginResponse, UserDetails } from './response/login.dto';
 import * as argon2 from 'argon2';
 import * as redis from 'redis';
 import { encrypt } from '../../shared/Utils';
@@ -32,7 +32,7 @@ export class AuthService {
     return null;
   }
 
-  async login(user: any): Promise<LoginResponse> {
+  async login(user: User): Promise<LoginResponse> {
     const payload = { username: user.username, userId: user.id };
     const token = this.jwtService.sign(payload);
 
@@ -43,7 +43,7 @@ export class AuthService {
     client.set(`is_validate_${encrypt(token)}`, '1');
 
     return {
-      email: user.email,
+      user: new UserDetails(user),
       token,
     };
   }

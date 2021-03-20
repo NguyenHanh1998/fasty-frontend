@@ -8,9 +8,6 @@ export class Subscription {
   @PrimaryGeneratedColumn({ name: 'id', type: 'int' })
   id: number;
 
-  @Column({ name: 'name', type: 'varchar', length: 80, nullable: false })
-  name: string;
-
   @Column({ name: 'user_id', type: 'int', nullable: false })
   userId: number;
 

@@ -156,4 +156,22 @@ export class Causes {
     'Webhook already exist.',
     HttpStatus.BAD_REQUEST,
   );
+
+  /**
+   * crate
+   */
+  public static CRATE_NOT_FOUND = new HttpException('Crate not found', HttpStatus.NOT_FOUND);
+
+  /**
+   * subscription
+   */
+  public static SUBSCRIPTION_NOT_FOUND = new HttpException(
+    'Subscription not found',
+    HttpStatus.NOT_FOUND,
+  );
+
+  /**
+   * product
+   */
+  public static PRODUCT_NOT_FOUND = new HttpException('Product not found', HttpStatus.NOT_FOUND);
 }
