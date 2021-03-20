@@ -19,7 +19,7 @@ export class Product {
   type: number;
 
   @Column({ name: 'gender', type: 'int', nullable: false })
-  role: string;
+  gender: number;
 
   @Column({ name: 'image', type: 'varchar', length: 255, nullable: false })
   image: string;

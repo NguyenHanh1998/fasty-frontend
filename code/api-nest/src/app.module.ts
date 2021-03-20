@@ -10,6 +10,7 @@ import { TransformInterceptor } from './config/rest/transform.interceptor';
 import { AuthModule } from './modules/auth/auth.module';
 import { CratesModule } from './modules/crates/crates.module';
 import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
+import { ProductsModule } from './modules/products/products.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { SubscriptionsModule } from './modules/subscriptions/subscriptions.modul
     AuthModule,
     CratesModule,
     SubscriptionsModule,
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [

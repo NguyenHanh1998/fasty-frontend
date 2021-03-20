@@ -41,7 +41,7 @@ export class SubscriptionsService {
 
     if (!subscription) {
       logger.error(`Subscription ${subscriptionId} not found`);
-      throw Causes.SUBSCRIPITON_NOT_FOUND;
+      throw Causes.SUBSCRIPTION_NOT_FOUND;
     }
     const listSubsciptions: Array<Subscription> = [];
     listSubsciptions.push(subscription);
