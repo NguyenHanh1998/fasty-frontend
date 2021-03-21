@@ -5,6 +5,7 @@ import { Causes } from 'src/config/exception/causes';
 import { PaginationResponse } from 'src/config/rest/paginationResponse';
 import { Crate, Subscription, User } from 'src/database/entities';
 import { getLogger } from 'src/shared/logger';
+import { EmptyObject } from 'src/shared/response/emptyObject.dto';
 import { getArrayPagination } from 'src/shared/Utils';
 import { Repository } from 'typeorm';
 import { SubscriptionDetails } from './response/subscriptionDetails.dto';
@@ -23,10 +24,13 @@ export class SubscriptionsService {
     private cratesRepository: Repository<Crate>,
   ) {}
 
-  async getAllSubscriptions(
+  async getAllSubscriptionsByUser(
     paginationOptions: IPaginationOptions,
+    user: User,
   ): Promise<PaginationResponse<SubscriptionDetails>> {
-    const subscriptions = await this.subscriptionsRepository.find();
+    const subscriptions = await this.subscriptionsRepository.find({
+      userId: user.id,
+    });
     const { items, meta } = getArrayPagination(subscriptions, paginationOptions);
 
     const results: SubscriptionDetails[] = await this.getSubscriptionsInfo(items);
@@ -68,5 +72,9 @@ export class SubscriptionsService {
     );
 
     return response;
+  }
+
+  async removeOneSubscripiton(subscriptionId: number) {
+    await this.subscriptionsRepository.delete(subscriptionId);
   }
 }
