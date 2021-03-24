@@ -123,11 +123,10 @@ export function get(slug, isLoading = true) {
 // Create subscription
 export function create(variables) {
   return dispatch => {
-    return axios.post(routeApi, mutation({
-      operation: 'subscriptionCreate',
-      variables,
-      fields: ['id']
-    }))
+    return axios({
+      method: 'post',
+      url: `${routeApi}/subscriptions/${variables.crateId}`
+    })
   }
 }
 
