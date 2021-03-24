@@ -82,4 +82,23 @@ export class SubscriptionsController {
     await this.subscriptionsService.removeOneSubscripiton(subscriptionId);
     return new EmptyObject();
   }
+
+  @Post('/:crate_id')
+  @ApiOperation({
+    tags: ['subscriptions'],
+    operationId: 'createOneSubscription',
+    summary: 'Create one subscription',
+    description: 'Create one subscription',
+  })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'SUccessful',
+    type: SubscriptionBase,
+  })
+  async createOneSubscripiton(
+    @Param('crate_id') crateId: number,
+    @Req() req: any,
+  ): Promise<SubscriptionDetails> {
+    return this.subscriptionsService.createOneSubscription(crateId, req.user);
+  }
 }
